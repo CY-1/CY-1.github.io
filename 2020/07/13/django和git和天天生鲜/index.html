@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>django和git和天天生鲜 | CY-1`Blog</title><meta name="description" content="静态文件 网页使用css文件 js文件 图片叫做静态文件 要存在static目录下 且static要去setting下设置 在setting下STATIC_URL&#x3D;”&#x2F;static&#x2F;“    STATICFILES_DIRS&#x3D;[os.path.join(BASE_DIR,”static”)] 如果修改了STATIC_URL的值 需要修改html里面对应的目录 但是本身static目录名字不变 如果"><meta name="keywords" content="python"><meta name="author" content="CY-1"><meta name="copyright" content="CY-1"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://cy-1.github.io/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="django和git和天天生鲜"><meta property="og:url" content="https://cy-1.github.io/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/"><meta property="og:site_name" content="CY-1`Blog"><meta property="og:description" content="静态文件 网页使用css文件 js文件 图片叫做静态文件 要存在static目录下 且static要去setting下设置 在setting下STATIC_URL&#x3D;”&#x2F;static&#x2F;“    STATICFILES_DIRS&#x3D;[os.path.join(BASE_DIR,”static”)] 如果修改了STATIC_URL的值 需要修改html里面对应的目录 但是本身static目录名字不变 如果"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-07-13T12:36:44.000Z"><meta property="article:modified_time" content="2020-07-13T12:43:49.472Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="next" title="jQuery和js" href="https://cy-1.github.io/2020/07/13/jQuery%E5%92%8Cjs/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime_unit: 'days',
+  runtime: false,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://assets.leetcode-cn.com/aliyun-lc-upload/users/ydc-3/avatar_1566625167.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">4</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">1</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">Categories</div><div class="length_num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态文件"><span class="toc-number">1.</span> <span class="toc-text">静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#中间件"><span class="toc-number">2.</span> <span class="toc-text">中间件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义模型管理类"><span class="toc-number">3.</span> <span class="toc-text">自定义模型管理类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在django-migrations中会记录迁移信息"><span class="toc-number">3.1.</span> <span class="toc-text">在django_migrations中会记录迁移信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上传文件"><span class="toc-number">4.</span> <span class="toc-text">上传文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分页"><span class="toc-number">5.</span> <span class="toc-text">分页</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GIT"><span class="toc-number"></span> <span class="toc-text">GIT</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建和回退"><span class="toc-number">1.</span> <span class="toc-text">创建和回退</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#工作区和暂存区"><span class="toc-number">2.</span> <span class="toc-text">工作区和暂存区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对比文件不同"><span class="toc-number">3.</span> <span class="toc-text">对比文件不同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支"><span class="toc-number">4.</span> <span class="toc-text">分支</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#解决冲突"><span class="toc-number">4.1.</span> <span class="toc-text">解决冲突</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github"><span class="toc-number">5.</span> <span class="toc-text">github</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#项目"><span class="toc-number"></span> <span class="toc-text">项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SKU和SPU"><span class="toc-number">1.</span> <span class="toc-text">SKU和SPU</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据表分析"><span class="toc-number"></span> <span class="toc-text">数据表分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#富文本编辑器"><span class="toc-number">0.1.</span> <span class="toc-text">富文本编辑器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用户模块"><span class="toc-number">1.</span> <span class="toc-text">用户模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类视图"><span class="toc-number">2.</span> <span class="toc-text">类视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#itsdangerous"><span class="toc-number">3.</span> <span class="toc-text">itsdangerous</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发送邮件"><span class="toc-number">4.</span> <span class="toc-text">发送邮件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#celery"><span class="toc-number">5.</span> <span class="toc-text">celery</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#redis作为session缓存"><span class="toc-number">6.</span> <span class="toc-text">redis作为session缓存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断是否登录"><span class="toc-number">7.</span> <span class="toc-text">判断是否登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#utils"><span class="toc-number">8.</span> <span class="toc-text">utils</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#悲观锁和乐观锁"><span class="toc-number">9.</span> <span class="toc-text">悲观锁和乐观锁</span></a></li></ol></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">CY-1`Blog</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">django和git和天天生鲜</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="Created 2020-07-13 20:36:44"><i class="far fa-calendar-alt fa-fw"></i> Created 2020-07-13</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="Updated 2020-07-13 20:43:49"><i class="fas fa-history fa-fw"></i> Updated 2020-07-13</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/python/">python</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta__icon"></i><span>Post View:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h3 id="静态文件"><a href="#静态文件" class="headerlink" title="静态文件"></a>静态文件</h3><ul>
+<li>网页使用css文件 js文件 图片叫做静态文件 要存在static目录下 且static要去setting下设置</li>
+<li>在setting下STATIC_URL=”/static/“    STATICFILES_DIRS=[os.path.join(BASE_DIR,”static”)]</li>
+<li>如果修改了STATIC_URL的值 需要修改html里面对应的目录 但是本身static目录名字不变</li>
+<li>如果想在html动态的加载img图片 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 下面这一句 在html考上的位置写 --&gt;</span><br><span class="line">&#123;% load static %&#125;</span><br><span class="line"></span><br><span class="line">&lt;img src&#x3D;&#123;% static &quot;img&#x2F;abc.jpg&quot; %&#125; alt&#x3D;&quot;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h3></li>
+<li>中间件：django给我们预留的函数接口 让我们可以干预请求和应答的请求</li>
+<li>获取游览器的IP地址<ul>
+<li>request.META 可以获取游览器的IP地址</li>
+</ul>
+</li>
+<li>使用方法<ul>
+<li>在自己的应用下创建middleware文件夹 </li>
+<li>在文件夹下创建一个类 写上process_view(self,request, view_func, *view_args, **view__kwargs):函数所以请求都会经过这个函数 如果给这个函数返回值 也就不再会调用本来继续调用的view_func函数 （可以利用此来屏蔽一些IP）</li>
+<li>在setting下设置中间件</li>
+<li>如果有两个中间件设置了process_exception 那么调用顺序和实际使用顺序相反，先声名 后调用<br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/1.jpg" alt="屏幕截图"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BlackedIPSMiddleware</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">'''中间件类'''</span></span><br><span class="line">    EXCLUDE_IPS=[<span class="string">"122.22.222.200"</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, get_response)</span>:</span><span class="comment">#因为新版本 __init__和__call__必须写</span></span><br><span class="line">        self.get_response = get_response</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, request)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.get_response(request)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_view</span><span class="params">(self, request, view_func, *view_args, **view__kwargs)</span>:</span></span><br><span class="line">        <span class="string">"""视图函数调用前会被调用"""</span></span><br><span class="line">        user_ip = request.META[<span class="string">'REMOTE_ADDR'</span>]</span><br><span class="line">        <span class="keyword">if</span> user_ip <span class="keyword">in</span> BlackedIPSMiddleware.EXCLUDE_IPS:</span><br><span class="line">            <span class="keyword">return</span> HttpResponse(<span class="string">"上一边"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_exception</span><span class="params">(self,request,exception)</span>:</span><span class="comment">## 这个函数会在视图异常后调用</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h3 id="自定义模型管理类"><a href="#自定义模型管理类" class="headerlink" title="自定义模型管理类"></a>自定义模型管理类</h3></li>
+</ul>
+</li>
+<li>admin.py中的list_display 不仅可以写字段名 也可以写方法名（也要有引号）</li>
+<li>title.admin_order_field 设置排序的字段 title_short_description设置方法在管理页面上字段名 在modes.xxxField(verbos_name=”xx”)是对字段起标题<br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/2.jpg" alt="屏幕截图"><br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/3.jpg" alt="屏幕截图"><br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/4.jpg" alt="屏幕截图"><h4 id="在django-migrations中会记录迁移信息"><a href="#在django-migrations中会记录迁移信息" class="headerlink" title="在django_migrations中会记录迁移信息"></a>在django_migrations中会记录迁移信息</h4></li>
+<li>如果想重新生成迁移文件和迁移 要删除django_migrations对应信息 和migration下的对应信息<h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3></li>
+<li>创建上传文件保存目录</li>
+<li>MEDIA_ROOT = os.path.join(BASE_DIR,”static/media”) setting设置</li>
+<li>后台管理页面上传<br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/5.jpg" alt="屏幕截图"><br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/6.jpg" alt="屏幕截图"><h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/7.jpg" alt="屏幕截图"><br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/8.jpg" alt="屏幕截图"><h2 id="GIT"><a href="#GIT" class="headerlink" title="GIT"></a>GIT</h2><h3 id="创建和回退"><a href="#创建和回退" class="headerlink" title="创建和回退"></a>创建和回退</h3></li>
+<li>git init 创建版本库</li>
+<li>使用如下两条命令可以创建一个版本：<ul>
+<li>git add code.txt</li>
+<li>git commit –m ‘版本1’</li>
+</ul>
+</li>
+<li>使用如下命令可以查看版本记录：<ul>
+<li>git log</li>
+</ul>
+</li>
+<li>现在若想回到某一个版本，可以使用如下命令：<ul>
+<li>git reset –hard HEAD^  表示版本回到前一个版本</li>
+<li>git reset –hard 版本号 可以回到指定的版本</li>
+</ul>
+</li>
+<li>在git中不是完整记录版本 是记录在之前的一个版本做了什么 是依赖于前一个版本</li>
+<li>用HEAD指正指向当前版本 HEAD^ 前一个版本 HEAD^^表示前两个 HEAD<del>1 表示前一个 HEAD</del>100表示前100</li>
+<li>git reflog 查看之前操作的记录 可以看到版本号<h3 id="工作区和暂存区"><a href="#工作区和暂存区" class="headerlink" title="工作区和暂存区"></a>工作区和暂存区</h3></li>
+<li>工作区：git init的目录就是工作区</li>
+<li>版本库：也就是在.git 隐藏目录下的</li>
+<li>暂存区：git add 也就是添加到暂存区 git commit也就是把暂存区的修改提交到版本库</li>
+<li>git status 查看目录情况<br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/9.jpg" alt="屏幕截图"></li>
+<li>git commit 只会用暂存区进行修改 如果直接commit 不add 那么暂存区不会变化</li>
+<li>git checkou – 文件名   撤销修改（还没加入到暂存区 更没加入版本库）</li>
+<li>git reset HEAD 文件名   取消暂存<h3 id="对比文件不同"><a href="#对比文件不同" class="headerlink" title="对比文件不同"></a>对比文件不同</h3></li>
+<li>git diff – HEAD 文件名 和当前版本比较文件差别</li>
+<li>git diff HEAD HEAD^ – code.txt 比较现在版本和前一个版本的code.txt的区别<br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/10.jpg" alt="屏幕截图"></li>
+<li>删除文件记得git add和git commit -m “描述”</li>
+<li>删除文件也可以 git checkout – 被删除的文件名 恢复文件</li>
+<li>如果没有跟踪文件 那就无法通过git找回文件<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3></li>
+<li>git 会把我们每次提交的版本串成一条时间线 这条时间线就是一个分支</li>
+<li>默认分支是主分支(master)</li>
+<li>HEAD严格来说是指向master 然后master指向当前版本</li>
+<li>git创建分支 是增加一个指针</li>
+<li>分支合并也就是移动master的指针</li>
+<li>git branch 查看当前分支</li>
+<li>git checkout -b 分支名 创建且切换到分支</li>
+<li>git checkout 分支名 切换分支</li>
+<li>git merge 分支名 合并分支 （如果能使用快速合并 会默认只用快速合并 也就是时间线向前移动）</li>
+<li>git branch -d 分支名 删除分支<br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/11.jpg" alt="屏幕截图"><h4 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h4></li>
+<li>手动解决冲突后 add 和commit即可</li>
+<li>在一些情况没有冲突但是无法快速合并 就会合并然后做一次新的提交 <ul>
+<li>合并后会出现一个弹窗 要输入信息 然后ctrl+x 然后Y 然后回车 </li>
+</ul>
+</li>
+<li>快速合并没有git log记录</li>
+<li>git merge –no-ff -m  ‘说明信息’ dev     强制禁用快速合并，会做一次新的commit</li>
+<li>bug分支：每个bug都可以创建一个临时分支 修复后合并分支 然后把临时分支删除</li>
+<li>git  stash 暂时保存工作现场 </li>
+<li>Git stash list 列出保存的工作现场</li>
+<li>git stash pop 回复工作现场<br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/12.jpg" alt="屏幕截图"><h3 id="github"><a href="#github" class="headerlink" title="github"></a>github</h3></li>
+<li>README 介绍项目的</li>
+<li>.gitignore 空时忽略文件</li>
+<li>ssh-keygen -t  rsa -C ‘邮箱地址’</li>
+<li>git clone ssh地址   克隆代码</li>
+<li>如果克隆出错<ul>
+<li>eval “$(ssh-agent -s)”      ssh-add 执行这两句话</li>
+</ul>
+</li>
+<li>git push origin 分支名称 推送本地分支到远程分支</li>
+<li>git branch –set-upstream-to=origin/远程分支名 本地分支名 设置本地分支跟踪远程分支</li>
+<li>跟踪后 git push就可以把本地版本推送到远程分支</li>
+<li>git pull orgin 分支名称 拉取远程分支代码<h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1></li>
+<li>B2B：企业对企业</li>
+<li>C2C：个人独个人</li>
+<li>B2C: 企业对个人</li>
+<li>C2B: 个人对企业：还是企业生产 但 是定制化生产</li>
+<li>O2O: 线上到线下：线上对线下</li>
+<li>F2C：工厂到个人：省去中间商的环节</li>
+<li>B2B2C：企业到企业到个人： 第一个B是供应商 第二个B是电子商务平台 C是个人</li>
+<li>前后端不分离and前后端分：就是前端和后端是否一起开发<h3 id="SKU和SPU"><a href="#SKU和SPU" class="headerlink" title="SKU和SPU"></a>SKU和SPU</h3></li>
+<li>SKU 标准产品单位</li>
+<li>SPU 库存量单位 </li>
+<li>一个手机 ： 型号就是SKU SPU就是手机的内存大小 储存大小等等<h1 id="数据表分析"><a href="#数据表分析" class="headerlink" title="数据表分析"></a>数据表分析</h1></li>
+<li>下图中商品表中还有一个图片字段因为便于个别页面查询 以时间换空间 因为首页等地方就需要一张图片可以减少关联查询</li>
+<li>下图index表示首页轮播图的先后</li>
+<li>下图有*的表示可有可无</li>
+<li>评论在订单商品表因为买了才能评论<br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/13.jpg" alt="屏幕截图"></li>
+<li>如果模型类是抽象类 要在Meta中加入abstract=True<h4 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h4></li>
+<li>先安装 pip install django-tinymce==2.60</li>
+<li>在test6/settings.py中为INSTALLED_APPS添加编辑器应用<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    'tinymce',</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li>在test6/settings.py中添加编辑器配置。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TINYMCE_DEFAULT_CONFIG = &#123;</span><br><span class="line">    'theme': 'advanced',</span><br><span class="line">    'width': 600,</span><br><span class="line">    'height': 400,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在test6/urls.py中配置编辑器url。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    ...</span><br><span class="line">    url(r'^tinymce/', include('tinymce.urls')),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 生成迁移文件前在setting下</span><br><span class="line"># django 认证系统使用的模型类</span><br><span class="line">AUTH_USER_MODEL = 'user.User'</span><br></pre></td></tr></table></figure>
+<h3 id="用户模块"><a href="#用户模块" class="headerlink" title="用户模块"></a>用户模块</h3></li>
+<li>all（）方法 传入一个可迭代对象判断是否 都 为真 </li>
+<li>命名空间的使用方法在谷歌收藏夹里面<h3 id="类视图"><a href="#类视图" class="headerlink" title="类视图"></a>类视图</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 在view.py中</span><br><span class="line">from django.views.generic import View</span><br><span class="line">class Myview(View):</span><br><span class="line">    def get(self,request):</span><br><span class="line">        return HttpResponse(&quot;result&quot;)</span><br><span class="line">    def post(self,request):</span><br><span class="line">        pass</span><br><span class="line"># 在urls.py</span><br><span class="line">yrlpatterns&#x3D;[</span><br><span class="line">url(r&quot;^about&#x2F;&quot;,Myview.as_view()),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h3 id="itsdangerous"><a href="#itsdangerous" class="headerlink" title="itsdangerous"></a>itsdangerous</h3></li>
+<li>先安装 pip install itsdangerous<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 在url中 </span><br><span class="line">from itsdangerous import TimedJSONWebSignatureSerializer as A</span><br><span class="line">a&#x3D;A()</span><br><span class="line">a.dumps(xxx)#加密</span><br><span class="line">a.loads(xxx)#解密</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># view</span><br><span class="line">from django.core.mail import send_mail</span><br><span class="line">subject &#x3D; &#39;天天生鲜欢迎信息&#39;</span><br><span class="line">message &#x3D; &quot;&quot;</span><br><span class="line">receiver &#x3D; [email]</span><br><span class="line">html_message &#x3D;r&#39;&lt;a href&#x3D;&quot;http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;user&#x2F;active&#x2F;%s&#x2F;&quot;&gt; http:&#x2F;&#x2F;127.0.0.1:8000&#x2F;user&#x2F;active&#x2F;%s&#x2F; &lt;&#x2F;a&gt;&#39; % \</span><br><span class="line">(token.decode(&#39;utf-8&#39;), token.decode(&#39;utf-8&#39;))</span><br><span class="line">send_mail(subject, message&#x3D;message, from_email&#x3D;sender, recipient_list&#x3D;receiver, html_message&#x3D;html_message)</span><br></pre></td></tr></table></figure>
+<h3 id="发送邮件"><a href="#发送邮件" class="headerlink" title="发送邮件"></a>发送邮件</h3><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/14.jpg" alt="屏幕截图"></li>
+<li>发邮件是django发送到smtp上面 然后smtp服务器发送给目的邮箱。且django发送到smtp服务器时间是不确定的，会让程序卡在这<ul>
+<li>所以让celery<h3 id="celery"><a href="#celery" class="headerlink" title="celery"></a>celery</h3></li>
+</ul>
+</li>
+<li>pip install celery</li>
+<li>如果需要把celery 形成工程目录 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 在工程根目录的下编写一个 main.py</span><br><span class="line">from celert import Celery</span><br><span class="line">frin ihome.tasks import config</span><br><span class="line"># 定义celert对象</span><br><span class="line">celery_app &#x3D; Celert(&quot;ihome&quot;)</span><br><span class="line"># 引入配置信息</span><br><span class="line">celery_app.config_from_object(config) # config 是写的一个config.py 配置文件</span><br><span class="line"># 自动搜索异步任务</span><br><span class="line">celery_app.autodiscover_tasks([&#39;ihome.tasks.sms&#39;]) # 在flask工程目录tasks下面创建一个包sms 里面有一个固定叫tasks.py的文件 里面是worker代码</span><br></pre></td></tr></table></figure></li>
+<li>celery -A celery_tasks.tasks worker -l info 启动任务者<ul>
+<li>启动的时候 要在相同的目录启动项目和celery的worker </li>
+<li>如果在win10 要安装 eventlet 然后 celery -A celery_tasks.tasks worker -l info -P eventlet</li>
+<li>windows在使用celery的时候，会存在很多坑。比如celery_task目录下的文件不能为tasks.py文件，必须是celery.py文件。同时在启动celery的work服务时，需要下载一个依赖包eventlet。启动时必须使用如下的命令（对应的目录下执行）：celery worker -A celery_task -l info -P eventlet</li>
+</ul>
+</li>
+<li>如果需要接受worker的结果 要用到backend存放结果数据<ul>
+<li>返回的结果是异步结果的对象 通过 返回值.get()能获取celery异步执行的结果（会变成同步行为 会有执行结果后才继续执行下面） 添加timeout 超过时间 立刻返回<br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/15.jpg" alt="屏幕截图"></li>
+</ul>
+</li>
+<li><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 在任务处理者加入</span><br><span class="line">import os</span><br><span class="line">import django</span><br><span class="line"># 因为依赖了django里面配置项需要进行一些初始化的setting初始化</span><br><span class="line">os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dailyfresh.settings')</span><br><span class="line">django.setup()</span><br></pre></td></tr></table></figure>
+<h3 id="redis作为session缓存"><a href="#redis作为session缓存" class="headerlink" title="redis作为session缓存"></a>redis作为session缓存</h3><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/16.jpg" alt="屏幕截图"><br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/17.jpg" alt="屏幕截图"><h3 id="判断是否登录"><a href="#判断是否登录" class="headerlink" title="判断是否登录"></a>判断是否登录</h3><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/18.jpg" alt="屏幕截图"></li>
+<li>上图的?next=/poll/3/ 表示是访问那个页面被返回回来的</li>
+<li>在html的form表单中不设置表单的action 会像游览器所在的地址发起请求<br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/19.jpg" alt="屏幕截图"></li>
+<li>上图是通过继承 实现装饰器的效果<h3 id="utils"><a href="#utils" class="headerlink" title="utils"></a>utils</h3></li>
+<li>项目中通用的东西要新建一个文件夹 一般是utils<br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/20.jpg" alt="屏幕截图"><br><img src= "/img/loading.gif" data-src="/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/21.jpg" alt="屏幕截图"><h3 id="悲观锁和乐观锁"><a href="#悲观锁和乐观锁" class="headerlink" title="悲观锁和乐观锁"></a>悲观锁和乐观锁</h3></li>
+<li>悲观锁 上来就加锁 自己用了 不让别人用</li>
+<li>乐观锁 觉得别人不会修改 先尝试修改 然后提交时判断和原来是否一样 一样就提交 不一样就失败<ul>
+<li>乐观锁的缺点是 虽然库存足够但是依旧后来者会下单失败</li>
+</ul>
+</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">CY-1</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://cy-1.github.io/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/">https://cy-1.github.io/2020/07/13/django%E5%92%8Cgit%E5%92%8C%E5%A4%A9%E5%A4%A9%E7%94%9F%E9%B2%9C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/python/">python</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/07/13/jQuery%E5%92%8Cjs/"><img class="next-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">jQuery和js</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fas fa-thumbs-up fa-fw"></i><span> Related Articles</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/07/13/jQuery和js/" title="jQuery和js"><img class="relatedPosts_cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-13</div><div class="relatedPosts_title">jQuery和js</div></div></a></div><div class="relatedPosts_item"><a href="/2020/07/13/一些知识点/" title="一些知识点"><img class="relatedPosts_cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-13</div><div class="relatedPosts_title">一些知识点</div></div></a></div></div></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By CY-1</div><div class="framework-info"><span>Driven </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="font_plus" title="Increase Font Size"><i class="fas fa-plus"></i></button><button id="font_minus" title="Decrease Font Size"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script></body></html>
