@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CY-1`Blog</title><meta name="description" content="CY-1&#96;Blog"><meta name="author" content="CY-1"><meta name="copyright" content="CY-1"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://cy-1.github.io/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="CY-1`Blog"><meta property="og:url" content="https://cy-1.github.io/"><meta property="og:site_name" content="CY-1`Blog"><meta property="og:description" content="CY-1&#96;Blog"><meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/users/ydc-3/avatar_1566625167.png"><meta property="article:published_time" content="2020-09-08T09:27:57.901Z"><meta property="article:modified_time" content="2020-09-08T09:27:57.901Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CY-1`Blog</title><meta name="description" content="CY-1&#96;Blog"><meta name="author" content="CY-1"><meta name="copyright" content="CY-1"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://cy-1.github.io/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="website"><meta property="og:title" content="CY-1`Blog"><meta property="og:url" content="https://cy-1.github.io/"><meta property="og:site_name" content="CY-1`Blog"><meta property="og:description" content="CY-1&#96;Blog"><meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/users/ydc-3/avatar_1566625167.png"><meta property="article:published_time" content="2020-09-20T01:49:20.180Z"><meta property="article:modified_time" content="2020-09-20T01:49:20.180Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
   document.documentElement.setAttribute('data-theme', 'dark')
   if (document.querySelector('meta[name="theme-color"]') !== null) {
     document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
@@ -101,11 +101,40 @@ if (autoChangeMode === '1') {
 相关术语
 栈顶：允许被插入元素的一端
 栈底：不允许被插入元素的一端
-空栈：栈为空
+空栈：栈为空顺序栈
 
 
+缺点:容量不可改变
+下图以top=-1为初始状态共享栈
+top1向下放元素 top0向上放元素链栈
+在单链表的头插法的删除和增加就算栈
 
-</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%AC%E4%BA%8C%E7%AB%A0-2/" title="数据结构第二章-2">     <img class="post_bg" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构第二章-2"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%AC%E4%BA%8C%E7%AB%A0-2/" title="数据结构第二章-2">数据结构第二章-2</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-09-06 10:16:54"><i class="far fa-calendar-alt"></i>2020-09-06</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">单链表的两种建立方法(带头结点)尾插法
+队列
+队列是只允许在一端进行插入，在另一端删除的线性表顺序表实现队列
+入队操作循环队列
+按照模运算的队列 也就形成了逻辑上的循环队列
+队列是否满的条件不选 rear=front 因为这是判断是否为空的
+
+
+入队
+出队
+查看队头元素
+队列元素的个数:(rear+MaxSize-front)%MaxSize
+不浪费空间 设置size
+对应的队列满是size==MaxSize seiz=0队空
+
+
+不浪费空间 使用tag
+当队尾指针指向队尾元素
+因为是先后移再插入 所以初始化也不同 队头指针指向队列尾部
+队满判断
+
+
+总结链表实现队列
+带头结点
+不带头结点
+判断长度可以遍历链表 或者设置一个size在增加或者减少结点时记录长度双端队列
+允许从两端 ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2020/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%AC%E4%BA%8C%E7%AB%A0-2/" title="数据结构第二章-2">     <img class="post_bg" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构第二章-2"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/09/06/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AC%AC%E4%BA%8C%E7%AB%A0-2/" title="数据结构第二章-2">数据结构第二章-2</a><div class="article-meta-wrap"><time class="post-meta__date" title="Created 2020-09-06 10:16:54"><i class="far fa-calendar-alt"></i>2020-09-06</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox article-meta__icon"></i><a class="article-meta__categories" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">单链表的两种建立方法(带头结点)尾插法
 可以利用按位插入 但是时间复杂度太大头插法
 对头结点进行后插操作
 L-next=NULL 防止指向了内存的脏数据
